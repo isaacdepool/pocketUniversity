@@ -1,0 +1,100 @@
+<ion-header>
+
+  <ion-toolbar color="danger">
+    
+    <ion-buttons slot="start">
+      <ion-button (click)="salir()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+
+      <ion-button *ngIf="!fav" (click)="opts( $event )">
+        <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+
+    <ion-title *ngIf="!ver"></ion-title>
+
+    <div *ngIf="!fav && ver && dataFotos.length > 1" >
+
+      <ion-title class="ion-text-capitalize">{{dataCarpeta.nombre}}</ion-title>
+      <ion-title size="small"
+      color="dark">{{dataFotos.length}} Imagenes</ion-title>
+      
+    </div>
+
+    <div *ngIf="!fav && ver && dataFotos.length == 0" >
+
+      <ion-title >{{dataCarpeta.nombre}}</ion-title>
+      <ion-title size="small" 
+      color="dark">Sin Imagenes</ion-title>
+      
+    </div>
+
+    <div *ngIf="!fav && ver && dataFotos.length == 1" >
+
+      <ion-title >{{dataCarpeta.nombre}}</ion-title>
+      <ion-title size="small"
+      color="dark">{{dataFotos.length}} Imagen</ion-title>
+      
+    </div>
+    
+    <ion-title *ngIf="fav" class="ion-text-capitalize">Favoritos</ion-title>
+    <div *ngIf="fav && ver && dataFotos.length > 1" >
+
+      <ion-title size="small"
+      color="dark">{{dataFotos.length}} Imagenes</ion-title>
+      
+    </div>
+
+    <div *ngIf="fav && ver && dataFotos.length == 0" >
+
+      <ion-title size="small"
+      color="dark">Sin Imagenes</ion-title>
+      
+    </div>
+
+    <div *ngIf="fav && ver && dataFotos.length == 1" >
+      
+      <ion-title size="small"
+      color="dark">{{dataFotos.length}} Imagen</ion-title>
+      
+    </div>
+
+    
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+
+<ng-container>
+ 
+    <ion-row >
+
+      <ng-container *ngFor="let fotos of dataFotos; let i = index">
+        
+        <ion-col size="6" class="padding" >
+            
+            <ion-card *ngIf="ver"
+            class="card-size" >
+              <ion-img class="img-size" (click)="img($event, fotos.id, i)" [src]="imgUrl[i]"></ion-img>
+            </ion-card>
+            
+            <ion-skeleton-text *ngIf="!ver"
+            color="medium"
+            class="card-size"
+            animated 
+            style="width: 100%"></ion-skeleton-text>
+  
+        </ion-col>
+
+      </ng-container>
+        </ion-row>
+
+</ng-container>
+</ion-content>

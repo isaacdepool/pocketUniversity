@@ -1,0 +1,89 @@
+<app-header titulo="Periodos academicos"></app-header>
+
+<ion-content>
+  
+  <ion-list lines="none">
+    <ion-item> 
+      <h3>Periodo academico</h3>
+    </ion-item>
+  </ion-list>   
+
+  <ion-button (click)="nuevoPeriodo()" 
+  expand="block" 
+  fill="clear" 
+  shape="round">
+  <ion-icon slot="start" name="add"></ion-icon>
+    Agregar nuevo periodo
+  </ion-button>
+
+  <ion-card *ngFor="let per of dataPeriodo, let idx = index">
+
+    <ion-card-header color="tertiary">
+      <ion-card-subtitle> 
+
+        <ion-button fill="clear"
+        (click)="onClick( idx )">
+            <ion-icon color="dark"
+            slot="icon-only"
+            [name]="verTri != idx? 'caret-forward' : 'caret-down'"></ion-icon>
+          </ion-button>
+
+        <label> {{per.nombre || "1 trimertre" }} </label>
+
+        <div class="more">
+        
+          <ion-button fill="clear"
+          (click)="opts($event, per.id)">
+            <ion-icon color="dark"
+            slot="icon-only"
+            name="ellipsis-vertical"></ion-icon>
+          </ion-button>
+  
+        </div>
+        
+      </ion-card-subtitle>
+    </ion-card-header>
+    <div *ngFor="let mate of dataMateria">
+
+
+      <ion-item (click)="irCuaderno( mate.id )"
+      *ngIf="mate.id_periodo === per.id"
+      [hidden] ="verTri != idx"
+      color="dark">
+      
+      <ion-label>
+        {{ mate.nombre }}
+      </ion-label>
+
+      <ion-icon slot="end"
+       name="caret-forward"></ion-icon>
+
+  </ion-item>
+  </div>
+
+  <ion-item  class="ion-text-center"
+  [hidden] ="verTri != idx"
+  (click)="aggMateria(per.id, per.nombre)"
+  color="dark">
+
+    <ion-label color="primary">
+      <ion-icon
+      name="add"
+      slot="icon-only"></ion-icon>
+      
+      Agregar materia
+    </ion-label>
+
+
+  </ion-item>
+
+
+
+</ion-card>
+  
+
+<app-fab slot="fixed"
+class="fixed"
+[pageCuaderno]="true"></app-fab>
+
+</ion-content>

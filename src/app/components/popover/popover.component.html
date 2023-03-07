@@ -1,0 +1,10 @@
+<ion-list>
+  <ion-item *ngFor="let it of items; let i = index;"
+  lines = "none"
+  (click)="onClick( it.nombre )"l>
+
+    <ion-icon slot="start" [name]="it.icon"></ion-icon>
+    <ion-label class="ion-text-capitalize">{{ it.nombre }}</ion-label>
+  </ion-item> 
+</ion-list>
+

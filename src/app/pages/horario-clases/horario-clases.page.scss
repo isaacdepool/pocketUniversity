@@ -1,0 +1,31 @@
+.card-complete{
+  width: 100%;
+}
+
+.color-nub{
+  border-radius: 50px;
+  background-color: skyblue;
+}
+
+.color-sun{
+  border-radius: 50px;
+  background-color: yellowgreen ;
+}
+
+.color-moon{
+  border-radius: 50px;
+  background-color: slateblue;
+}
+
+ion-segment-button{
+  margin: 0 10vw;
+  text-align: center;
+}
+
+ion-segment{
+  padding-left: 25vw;
+}
+
+h1{
+  color: aliceblue;
+}

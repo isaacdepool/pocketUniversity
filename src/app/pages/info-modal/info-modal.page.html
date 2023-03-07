@@ -1,0 +1,142 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    
+    <ion-buttons slot="start">
+      <ion-button (click)="salir()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title >Detalles</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list *ngIf="tipo === 'imagenCarpeta'  && ver"
+  class="ion-padding">
+
+    <ion-item lines="none">
+      <ion-label color="medium"
+      position="fixed">Fecha</ion-label>
+      <ion-label>{{datosFotos[0].fecha | fecha}}</ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label color="medium"
+      position="fixed">
+        Carpeta
+      </ion-label>
+      <ion-label>{{datosCarpeta[0].nombre}}</ion-label>
+    </ion-item>
+
+    <ion-item lines="none"> 
+      <ion-label color="medium"
+      position="fixed">
+        Ruta
+      </ion-label>
+      <ion-label>Galeria/{{datosCarpeta[0].nombre}}/{{datosFotos[0].nombre}}</ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label color="medium"
+      position="fixed"
+      font-size="small">Nombre
+      
+    </ion-label>
+      <ion-label>{{datosFotos[0].nombre}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="tipo === 'carpeta' && ver">
+    <ion-item lines="none">
+      <ion-label color="medium"
+      position="fixed">
+        Nombre
+      </ion-label>
+      <ion-label>{{datosCarpeta[0].nombre}}</ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label color="medium"
+      position="fixed">
+        Imagenes
+      </ion-label>
+      <ion-label>{{datosFotos.length}}</ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label color="medium"
+      position="fixed">
+        Materia
+      </ion-label>
+      <ion-label *ngIf="datosCarpeta[0].id_materia > 0">{{datosCarpeta[0].nombre}}</ion-label>
+      <ion-label *ngIf="datosCarpeta[0].id_materia == 0">Carpeta independiente</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="tipo === 'materia' && ver">
+    <ion-item lines="none">
+      <ion-label color="medium"
+      position="fixed">
+        Nombre
+      </ion-label>
+      <ion-label>{{datosMaterias[0].nombre}}</ion-label>
+    </ion-item>
+
+    <ion-item >
+      <ion-label color="medium"
+      position="fixed">
+        Periodo academico
+      </ion-label>
+      <ion-label>{{datosPeriodo[0].nombre}}</ion-label>
+    </ion-item>
+  </ion-list>
+ 
+  <ion-title *ngIf="tipo === 'materia'">Horario de clases</ion-title>
+
+  <ion-item *ngIf="datosEvento.length == 0 && tipo === 'materia'">
+    <ion-label color="medium"
+    position="fixed">
+      Sin horario de clases
+    </ion-label>
+  </ion-item>
+
+  <ion-list *ngIf="tipo === 'materia' && ver && datosEvento.length > 0">
+
+
+    <ion-item lines="none">
+      <ion-label color="medium"
+      position="fixed">
+        Dia
+      </ion-label>
+      <ion-label>{{datosEvento[0].dia | dia: datosEvento[0].dia}}</ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label color="medium"
+      position="fixed">
+        Inicio
+      </ion-label>
+      <ion-label>{{datosEvento[0].inicio | hora}}</ion-label>
+    </ion-item>
+
+  <ion-item lines="none">
+    <ion-label color="medium"
+    position="fixed">
+      Fin
+    </ion-label>
+    <ion-label>{{datosEvento[0].fin | hora}}</ion-label>
+  </ion-item>
+
+<ion-item >
+  <ion-label color="medium"
+  position="fixed">
+    Comentarios
+  </ion-label>
+  <ion-label>{{datosEvento[0].comentario || 'Sin comentarios'}}</ion-label>
+</ion-item>
+</ion-list>
+
+</ion-content>

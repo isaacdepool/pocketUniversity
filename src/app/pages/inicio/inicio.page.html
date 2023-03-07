@@ -1,0 +1,93 @@
+<app-header titulo="Inicio"></app-header>
+
+<ion-content>
+
+  <!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Suelta para refrescar"
+      refreshingSpinner="circles"
+      >
+    </ion-refresher-content>
+  </ion-refresher> -->
+
+  <ion-card color="medium" *ngIf="boolean">
+
+
+    <ion-card-header>
+      <ion-card-subtitle>
+      <ion-icon name="notifications"></ion-icon>
+        Notificaciones
+      </ion-card-subtitle>
+      <ion-card-subtitle class="ion-text-capitalize">
+          {{e.dia | dia: e.dia}}, {{e.inicio | hora }} - {{e.fin | hora }}
+        </ion-card-subtitle>
+      <ion-card-title class="ion-text-capitalize">{{e.nombre || 'Sin notificaciones'}}</ion-card-title>
+      <ion-card-content class="ion-text-capitalize">
+        {{ e.comentario || 'Sin comentarios'}}
+      </ion-card-content>
+    </ion-card-header>
+
+  </ion-card>
+
+  <ion-card color="medium" *ngIf="!boolean">
+
+    <ion-card-header>
+      <ion-card-subtitle>
+      <ion-icon name="notifications"></ion-icon>
+        Notificaciones
+      </ion-card-subtitle>
+      <ion-card-subtitle class="ion-text-capitalize">
+          {{ diaLocal | fecha }}
+        </ion-card-subtitle>
+      <ion-card-title class="ion-text-capitalize">Sin notificaciones</ion-card-title>
+      <ion-card-content class="ion-text-capitalize">
+        Sin comentarios
+      </ion-card-content>
+    </ion-card-header>
+
+  </ion-card>
+
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label>Recomendados</ion-label>
+        </ion-item>
+      </ion-list>
+
+       
+      
+      <ion-slides pager="true">
+        <ion-slide *ngFor="let d of dataYoutube">
+      <ion-card  
+      href="https://www.youtube.com/watch?v={{ d.id.videoId }}"
+      color="youtube">
+      
+          
+      <ion-img [src]="d.snippet.thumbnails.high.url"></ion-img>
+
+      <ion-card-header>
+        
+            <ion-card-subtitle>
+              <ion-icon name="logo-youtube"></ion-icon>
+              {{d.snippet.channelTitle}}
+            </ion-card-subtitle>
+            <ion-card-title>
+              {{d.snippet.title}}
+            </ion-card-title>
+          </ion-card-header>
+
+          
+          <ion-card-content>
+            {{d.snippet.description}}
+          </ion-card-content>
+          
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+
+
+
+   
+
+
+</ion-content>

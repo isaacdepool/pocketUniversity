@@ -1,0 +1,103 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content class="co">
+
+    <ion-slides 
+      class="slide"
+      scrollbar="true"
+      [options]="slideOpts"
+      (ionSlidesDidLoad)="cambio()"
+      (ionSlideDidChange)="cambio()"
+      #slider>
+    
+        <ng-container *ngFor="let fotos of dataFotos; let i = index" >
+    
+          <ion-slide class="slides"
+          (click)=" verOpts(fotos.id, i)" >
+            <ion-img [src]="imgUrl[i]"></ion-img>
+          </ion-slide>
+        </ng-container>
+    
+      </ion-slides>
+
+
+  <ion-item [hidden]="opts"
+  class="opts2"
+  slot="fixed"
+  color="dark">
+
+  <div slot="start">
+
+    <ion-button (click)="salir()"
+    fill="clear"
+    shape="round"
+    size="medium"
+    color="light">
+      <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+    </ion-button>
+  
+  </div>
+
+  <div slot="end">
+    
+    <ion-button (click)="info()" 
+    fill="clear"
+    shape="round"
+    size="medium"
+    color="light">
+      <ion-icon slot="icon-only" name="alert-circle-outline"></ion-icon>
+    </ion-button>
+
+  </div>
+
+  </ion-item>
+
+  
+  <ion-item [hidden]="opts"
+  class="opts"
+  slot="fixed"
+  color="dark">
+
+  <div slot="start">
+
+    <ion-button (click)="favorite()"
+    fill="clear"
+    shape="round"
+    size="medium"
+    color="light">
+      <ion-icon *ngIf="isFavorite[indexSlider] == 0" slot="icon-only" name="heart-Outline"></ion-icon>
+      <ion-icon color="danger" 
+      *ngIf="isFavorite[indexSlider] == 1" slot="icon-only" name="heart"></ion-icon>
+    </ion-button>
+  
+  </div>
+
+  
+  <ion-button (click)="compartir()" 
+  class="center"
+  fill="clear"
+  shape="round"
+  size="medium"
+  color="light">
+    <ion-icon slot="icon-only" name="share-Outline"></ion-icon>
+  </ion-button>
+
+  <div slot="end">
+    
+    <ion-button (click)="eliminarFoto()" 
+    fill="clear"
+    shape="round"
+    size="medium"
+    color="light">
+      <ion-icon slot="icon-only" name="trash-Outline"></ion-icon>
+    </ion-button>
+
+  </div>
+
+  </ion-item>
+
+
+
+</ion-content>

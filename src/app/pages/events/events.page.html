@@ -1,0 +1,52 @@
+<app-header titulo="Eventos y tareas"></app-header>
+
+<ion-content>
+
+
+    <ion-list>
+
+        <ion-item *ngFor="let event of event">
+
+            <ion-icon
+            slot="start" 
+            [name]="event.tipo"></ion-icon>
+            <ion-label class="ion-text-capitalize" >{{event.nombre}}   
+
+                <ion-label class="ion-text-capitalize" 
+                color="medium">
+                
+                {{event.dia | dia: event.dia}}, {{event.inicio | hora }} - {{event.fin | hora }}
+
+                </ion-label>
+                
+            </ion-label>
+
+            <ion-button (click)="opts( $event, event.id )" 
+            fill="clear"
+            shape="round">
+
+                <ion-icon name="ellipsis-vertical"
+                color="dark"></ion-icon>
+
+        </ion-button>
+
+
+        </ion-item>
+
+    </ion-list>
+
+    <ion-list *ngIf="event.length === 0">
+        <ion-item lines="none">
+            <ion-label class="ion-text-center"
+            color="primary">Sin Eventos</ion-label>
+        </ion-item>
+    </ion-list>
+
+    <app-fab class="fixed"
+    slot="fixed"
+    [pageEvent]="true"></app-fab>
+
+
+
+
+</ion-content>

@@ -1,0 +1,33 @@
+page-home {
+    button {
+        align-items: baseline;
+    }
+}
+
+.fondo {
+    --ion-item-background: #f3f2f1;
+    --ion-item-color: #000;
+    --border-radius: 5px;
+    color: #595959;
+    font-weight: 500;
+}
+
+.text {
+    background: #f3f2f1;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 15px;
+    color: #737373;
+    font-weight: 500;
+}
+
+ion-list {
+    padding-top: 5px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+}

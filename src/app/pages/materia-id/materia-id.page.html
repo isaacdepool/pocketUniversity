@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar color="danger">
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+
+    <ng-container *ngFor="let mate of dataMateria">
+ 
+      <ion-title>{{dataMateria[0].nombre}}</ion-title>
+      
+    </ng-container>
+
+
+    <ion-buttons slot="end">
+
+      <ion-button (click)="edit()" 
+      fill="clear"  
+      shape="round">
+
+        <ion-icon slot="icon-only" name="pencil"></ion-icon>
+
+      </ion-button>
+    </ion-buttons>
+
+
+    <ion-buttons slot="end">
+
+      <ion-button (click)="info( $event )" 
+      fill="clear" 
+      shape="round">
+
+        <ion-icon slot="icon-only" name="alert-circle"></ion-icon>
+
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+
+      <ion-button (click)="borrar()" 
+      fill="clear" 
+      shape="round">
+
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+  <ion-content>
+ 
+    <div *ngFor="let cuader of dataCuaderno">
+
+      <ion-card *ngIf="cuader.id_materia == materiaId"
+      color="tertiary">
+      <ion-card-header>
+        <ion-card-subtitle class="ion-text-capitalize"> 
+  
+          <div>
+            <ion-label>Creado: {{cuader.fecha_crea | fecha}}</ion-label>
+          </div>
+   
+          <div class="more">
+            <ion-button fill="clear"
+            (click)="more( $event, cuader.id )">
+              <ion-icon color="dark"
+              slot="icon-only"
+              name="ellipsis-vertical"></ion-icon>
+            </ion-button>
+    
+          </div>
+        </ion-card-subtitle>
+  
+        <ion-card-title 
+        (click)="abrirNota( cuader.id )">{{cuader.titulo || 'Sin titulo'}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="cut" 
+      (click)="abrirNota( cuader.id )">
+        {{cuader.contenido || 'Sin contenido'}}
+      </ion-card-content>
+
+      <div class="end">
+          <ion-label size="20"
+          color="light">Modificado: {{cuader.fecha_mod | fecha}}</ion-label>
+      </div>
+    </ion-card>
+    </div>
+
+
+        
+    <app-fab class="fixed"
+    slot="fixed"
+    [idMateria]="materiaId"
+    [pageMateriaId]="true"></app-fab>
+
+</ion-content>
+
+
+
+

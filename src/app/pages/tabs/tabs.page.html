@@ -1,0 +1,25 @@
+<ion-tabs>
+
+    <ion-tab-bar slot="bottom">
+
+        <ion-tab-button style="position:relative; left: -5.2%;" tab="tab1">
+            <ion-icon name="list"></ion-icon>
+            <ion-label>Historial</ion-label>
+        </ion-tab-button>
+
+
+        <ion-tab-button style="position:relative; right:-5.2%;" tab="tab3">
+            <ion-icon name="pie-chart"></ion-icon>
+            <ion-label>Graficos</ion-label>
+        </ion-tab-button>
+
+
+    </ion-tab-bar>
+
+</ion-tabs>
+
+<ion-fab color="danger" vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button color="danger" (click)="onClick()">
+        <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+</ion-fab>

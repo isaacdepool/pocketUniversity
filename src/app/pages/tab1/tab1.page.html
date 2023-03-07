@@ -1,0 +1,71 @@
+<app-header titulo="Finanzas"></app-header>
+
+
+<ion-content>
+    <ion-list>
+        <ion-item class="ion-padding">
+            <h1>Historial de gastos</h1>
+        </ion-item>
+    </ion-list>
+            <ion-list>
+                <ion-item lines="none">
+                    <ion-label slot="" class="wei">Mes</ion-label>
+                        <ion-datetime slot="end"
+                        required
+                        class="ion-text-capitalize"
+                        name="dia" 
+                        (ionChange)="cargarMes( $event )" 
+                        [monthNames]="monthNames"
+                        displayFormat="MMMM YYYY" 
+                        cancelText="Cancelar" 
+                        doneText="Aceptar" 
+                        max="2050" 
+                        min="2020" 
+                        [(ngModel)]="myDate">
+                    </ion-datetime>
+                
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label class="wei">Total gastado</ion-label>
+                        <h2 slot="end" class="wei">${{condecimales}}</h2>
+                    </ion-item>
+            </ion-list>
+
+            <ion-list>
+                
+            </ion-list>
+
+    <ion-list>
+        <ion-item-sliding *ngFor="let gasto of dataGasto">
+            <ion-item>
+                <ion-icon class="dere" [name]="gasto.icono">
+                </ion-icon>
+                <ion-label class="mar wei">
+                    {{gasto.tipo_gasto}}
+                    <h6 >{{gasto.fecha | dia}}</h6>
+                    <h6>{{gasto.descripcion}}</h6>
+                </ion-label>
+
+                <ion-badge class="wei" slot="end" color="danger">${{gasto.gasto}}</ion-badge>
+            </ion-item>
+
+            <ion-item-options side="end">
+                <ion-item-option color="danger" (click)="borrar(gasto.id)">
+                    <ion-icon slot="icon-only" name="trash"></ion-icon>
+                </ion-item-option>
+
+            </ion-item-options>
+        </ion-item-sliding>
+
+    </ion-list>
+
+    <ion-list *ngIf="dataGasto.length === 0">
+        <ion-item lines="none">
+            <ion-label class="ion-text-center"
+            color="primary">Sin Gastos</ion-label>
+        </ion-item>
+    </ion-list>
+
+
+</ion-content>

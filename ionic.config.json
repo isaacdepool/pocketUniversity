@@ -1,5 +1,8 @@
 {
-  "name": "myApp",
-  "integrations": {},
+  "name": "Pocket University",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
   "type": "angular"
 }

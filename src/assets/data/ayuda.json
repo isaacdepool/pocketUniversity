@@ -1,0 +1,13 @@
+{
+    "preguntas": [
+
+        { "titulo": "1. ¿Qué es Pocket University?", "info": "Pocket University sera tu acompañante en la dura travesia llamada universidad, con ella tendrás un control total de tu vida como estudiante en muchos aspectos. Ese es su proposito original pero eres libre de utilizarla para cualquier otro topico." },
+        { "titulo": "2. ¿Para quienes esta dirigido?", "info": "Esta dirigido para todo aquel que curse alguna carrera universitaria" },
+        { "titulo": "3. ¿Como Agrego algun evento?", "info": "Abre el menu desplegable ve al modulo de 'Eventos y tareas' toca el boton inferior derecho, agrega el titulo del evento le fecha y el tipo de evento y para finalizar tocar el boton de 'Guardar'. " },
+        { "titulo": "4. ¿Como agrego mi horario de clase?", "info": "Abre el menu desplegable ve al modulo 'Horario de clase' posteriormente toca el boton inferior derecho donde podras agregar tu horario." },
+        { "titulo": "5. ¿Donde veo mis gastos?", "info": "Abre el menu desplegable ve al modulo de 'Finanzas' elige el mes y año en donde fue registrado el gasto posteriormente saldra todos los gastos registrados " },
+        { "titulo": "6. Quiero guardar mis gastos", "info": "Abre el menu desplegable ve al modulo de 'Finanzas' toca el boton inferior del centro elige una categoria y coloca el monto del gasto para finalizar toca el boton agregar.  " },
+        { "titulo": "7. ¿Puedo ver directamente las imagenes?", "info": "Por supuesto si quieres ver todas las imagenes sguardas en la aplicacion abre el menu desplegable y ve al apartado 'Galeria' ahi tendras acceso a todas las imagentes guardadas." },
+        { "titulo": "8. ¿Puedo tomar fotos dentro de la aplicacion?", "info": "Claro que si todos los modulos en la parte superior derecha hay un icono de una camara al tocarlo podras tomar fotos dentro de la aplicacion." }
+    ]
+}

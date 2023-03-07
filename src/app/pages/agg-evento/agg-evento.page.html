@@ -1,0 +1,180 @@
+<ion-header>
+  <ion-toolbar color="danger">
+
+    <ion-buttons slot="start">
+
+     <ion-buttons slot="start">
+       <ion-back-button defaultHref="/"></ion-back-button>
+     </ion-buttons>
+
+    </ion-buttons>
+
+    <ion-title *ngIf="!boo"> Agregar nuevo evento </ion-title>
+    <ion-title *ngIf="boo"> Editar evento </ion-title>    
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <form #form="ngForm" (ngSubmit)="onSubmitTemplate()">
+    
+    <!-- Nombre -->
+            <ion-item> 
+              <ion-icon slot="start" name="reader"></ion-icon>
+        
+              <ion-label position="floating">
+              Titulo</ion-label>
+              
+              <ion-input
+              type="text"
+              name="nombre"
+              [(ngModel)]="evento.nombre"
+              minlength="1"
+              maxlegth="15"
+              required>
+              
+            </ion-input>
+            
+            
+          </ion-item>
+        
+  <!-- hora del evento -->
+    <ion-list>
+      
+      <ion-item lines="none">
+        <ion-icon slot="start" name="time"></ion-icon>
+    
+        <ion-input type="text"
+        disabled 
+        >Dia</ion-input>
+    
+        <ion-datetime
+        required 
+        name="dia"
+        (ionChange)="dia( $event )"
+        [(ngModel)]="evento.dia"
+        displayFormat="DD MMMM YYYY"   
+        placeholder="Dia/Mes/Año"
+        [monthNames]="monthNames"
+        cancelText = "Cancelar"
+        doneText= "Aceptar"
+        [min]="diaIngresado"
+        max="2050-12-31"
+        ></ion-datetime> 
+        
+        
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-icon slot="start"></ion-icon>
+      
+          <ion-input type="text"
+          disabled 
+          >Inicio</ion-input>
+      
+          <ion-datetime
+          required 
+          name="inicio"
+          [(ngModel)]="evento.inicio"
+          displayFormat="hh:mm a"   
+          placeholder="00:00"
+          cancelText = "Cancelar"
+          doneText= "Aceptar"
+          [min]="horaLocal"
+          ></ion-datetime> 
+          
+      
+          </ion-item>
+        
+        <ion-item>
+    
+          <ion-icon slot="start"></ion-icon>
+    
+        <ion-input type="text"
+        disabled 
+        >Fin</ion-input> 
+    
+        <ion-datetime 
+        required 
+        name="fin"
+        [(ngModel)]="evento.fin"
+        displayFormat="hh:mm a"  
+        [min]="evento.inicio.toISOString"
+        placeholder="00:00"
+        cancelText = "Cancelar"
+        doneText= "Aceptar"
+        ></ion-datetime> 
+    
+        </ion-item>
+        
+    </ion-list>
+        
+      <!-- Tipo de recordatorio -->
+    
+          
+          <ion-radio-group required
+          [(ngModel)]="evento.tipo"
+          name="tipo"
+          class="ion-padding"
+          value="biff">
+    
+            <ion-label disabled>
+              <ion-icon slot="start" name="pricetag"></ion-icon>
+                Tipo de recordatorio
+              </ion-label>
+            
+            <ion-item lines="none">
+              <ion-icon slot="start"></ion-icon>
+    
+              <ion-input type="text" 
+              disabled >Estudio</ion-input>
+    
+              <ion-radio slot="start" value="library"></ion-radio>
+            </ion-item>
+    
+            <ion-item >
+              <ion-icon slot="start"></ion-icon>
+    
+              <ion-input
+              type="text" 
+              disabled>Evento</ion-input>
+    
+              <ion-radio slot="start" value="notifications-circle"></ion-radio>
+            </ion-item>
+            
+          </ion-radio-group>
+
+    <!-- Comentario -->
+        <ion-item>
+          <ion-icon slot="start" name="pencil"></ion-icon>
+    
+          <ion-label position="floating">
+          Comentario</ion-label>
+          
+          <ion-input
+          type="text"
+          name="comentario"
+          [(ngModel)]="evento.comentario"
+          maxlegth="100">
+          
+        </ion-input>
+        
+        
+      </ion-item>
+
+        <ion-button class="ion-padding"
+        type="submit" 
+        expand="block"
+        [disabled]="form.invalid">
+          Guardar
+        </ion-button>
+
+        
+
+  </form>
+  
+
+
+
+</ion-content>

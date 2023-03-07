@@ -1,0 +1,52 @@
+<app-header titulo="Finanzas">
+</app-header>
+
+
+<ion-content>
+
+    <ion-list>
+        <ion-item lines="none">
+            <h1>Graficos de gastos</h1>
+        </ion-item>
+    </ion-list>
+
+
+    <ion-card class="back-card">
+        <ion-card-header>
+
+        </ion-card-header>
+        <ion-card-content>
+            <canvas #doughnutCanvas></canvas>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-list *ngIf="condecimales > 0">
+
+        <ion-item lines="none">
+            <ion-label class="wei">Gastos en Comida </ion-label>
+            <h4 slot="end" class="wei">{{(comida/condecimales * 100).toFixed(2)}} %</h4>
+        </ion-item>
+        <ion-item lines="none">
+            <ion-label class="wei">Gastos en Ropa</ion-label>
+            <h4 slot="end" class="wei">{{(ropa/condecimales * 100).toFixed(2)}} %</h4>
+        </ion-item>
+        <ion-item lines="none">
+            <ion-label class="wei">Gastos en Universidad </ion-label>
+            <h4 slot="end" class="wei">{{(uni/condecimales * 100).toFixed(2)}} %</h4>
+        </ion-item>
+        <ion-item lines="none">
+            <ion-label class="wei">Gastos en Deudas </ion-label>
+            <h4 slot="end" class="wei">{{(deudas/condecimales * 100).toFixed(2)}} %</h4>
+        </ion-item>
+        <ion-item>
+            <ion-label class="wei">Gastos en Otros </ion-label>
+            <h4 slot="end" class="wei">{{(otros/condecimales * 100).toFixed(2)}} %</h4>
+        </ion-item>
+        
+    </ion-list>
+            <ion-item lines="none">
+                <h2 class="wei">Total gastado</h2>
+                <h2 slot="end" class="wei">${{condecimales}}</h2>
+            </ion-item>
+
+</ion-content>

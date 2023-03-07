@@ -1,0 +1,89 @@
+<ion-header>
+    <ion-toolbar color="header">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="tabs/tab1"></ion-back-button>
+            <ion-title>Ingresar gasto</ion-title>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+    <ion-item lines="none">
+        <h1>
+            Categorias
+        </h1>
+    </ion-item>
+
+    <form #form="ngForm" (ngSubmit)="ingresarGasto()">
+           
+        <ion-segment scrollable="true" 
+        mode="md" 
+        color="header" 
+        (ionChange)="cambioCategoria( $event)" 
+        [value]="icon[0]">
+
+            <ion-segment-button mode="md" *ngFor="let ico of icon" [value]="ico.nom">
+                <ion-label class="ion-text-capitalize">
+                    <ion-icon class="ic" [name]="ico.icono "></ion-icon>
+                </ion-label>
+                {{ico.nom}}
+            </ion-segment-button>
+
+
+
+        </ion-segment>
+
+        <div class="bot">
+            <ion-list class="ion-padding">
+                        <ion-item>
+                            <ion-input placeholder="$ 0.0"
+                            type="cc-number" 
+                            name="value" 
+                            inputmode="decimal" 
+                            autocorrect="on" 
+                            [(ngModel)]="value" 
+                            pattern="[0-9]+(?:[.,][0-9]{1,2})?" 
+                            step="0.01" 
+                            strong></ion-input>
+
+                            <ion-button
+                            slot="end" 
+                            strong fill="clear" 
+                            (click)="numbers('borrar')">
+                                <ion-icon slot="icon-only" name="backspace-outline"></ion-icon>
+                            </ion-button>
+                        </ion-item>
+
+                        <!-- Comentario -->
+        <ion-item>
+          <ion-icon slot="start" name="pencil"></ion-icon>
+    
+          <ion-label position="floating">
+            Descripcion</ion-label>
+          
+          <ion-input
+          type="text"
+          name="Descrip"
+          [(ngModel)]="descrip"
+          maxlegth="100">
+          
+        </ion-input>
+        
+        
+      </ion-item>
+      
+            </ion-list>
+            
+
+        </div>
+        <ion-button class="ion-padding"
+        [disabled]="form.invalid" 
+        type="submit" 
+        expand="full" 
+        color="danger">
+            Agregar
+        </ion-button>
+    </form>
+</ion-content>

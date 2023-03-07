@@ -1,0 +1,170 @@
+<ion-header>
+  <ion-toolbar color="danger">
+
+    <ion-buttons slot="start">
+
+     <ion-buttons slot="start">
+       <ion-back-button defaultHref="/"></ion-back-button>
+     </ion-buttons>
+
+    </ion-buttons>
+
+    <ion-title> {{titulo}} </ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content> 
+  
+  <form #form="ngForm" (ngSubmit)="guardarDatos()">
+    
+    <ion-list>
+  
+      <ion-item>
+        <ion-icon slot="start" name="reader"></ion-icon>
+        <ion-label position="floating">Nombre de la materia</ion-label>
+  
+        <ion-input type="text"
+        minlength="1"
+        maxlegth="10"
+        name="nombre"
+        [(ngModel)]="modalMaterias.nombre"
+        required></ion-input>
+  
+      </ion-item>
+      
+    </ion-list>
+  
+    <ion-list>
+  
+      <ion-item>
+        <ion-icon slot="start" name="library"></ion-icon>
+        <ion-label>Periodo academico</ion-label>
+  
+        <ion-select
+        cancelText = "Cancelar"
+        name="id_periodo"
+        [(ngModel)]="modalMaterias.id_periodo"
+        okText = "Aceptar"
+        placeholder="Periodo"
+        required>
+  
+          <ion-select-option *ngFor="let per of dbPeriodo"
+          [value]="per.id">{{ per.nombre }}</ion-select-option>
+          
+        </ion-select>
+      </ion-item>
+      
+    </ion-list>
+  
+      <ion-list>
+  
+        <ion-item>
+  
+          <ion-icon slot="start" name="calendar"></ion-icon>
+          <ion-label>Agregar Horario de clases</ion-label>
+  
+          <ion-button fill="clear"
+          (click)="ver()">
+              <ion-icon color="dark"
+              slot="icon-only"
+              [name]="verEven? 'caret-forward' : 'caret-down'"></ion-icon>
+            </ion-button>
+  
+        </ion-item>
+  
+      </ion-list>
+  
+        <ion-list [hidden]="!verEven">
+          
+          <ion-item lines="none">
+           <ion-icon slot="start" name="time"></ion-icon>
+       
+           <ion-input type="text"
+           disabled 
+           >Dia</ion-input>
+       
+           <ion-input 
+           class="ion-text-capitalize"
+           disabled
+           [required]="verEven"
+           type="text"
+           class="pick"
+           placeholder="Dia"
+           (click)="pick()"
+           name="dia"
+           [(ngModel)]="modalMaterias.dia"> {{modalMaterias.dia}}</ion-input> 
+           
+           </ion-item>
+     
+             <ion-item lines="none">
+               <ion-icon slot="start"></ion-icon>
+           
+               <ion-input type="text"
+               disabled 
+               >Inicio</ion-input>
+           
+               <ion-datetime
+               [required]="verEven"
+               displayFormat="hh:mm a"   
+               placeholder="00:00"
+               cancelText = "Cancelar"
+               doneText= "Aceptar"
+               name="inicion"
+               [min]="horaLocal"
+               [(ngModel)]="modalMaterias.inicio"
+               [value]="modalMaterias.inicio"
+               ></ion-datetime> 
+               
+           
+               </ion-item>
+             
+             <ion-item>
+         
+               <ion-icon slot="start"></ion-icon>
+         
+             <ion-input type="text"
+             disabled 
+             >Fin</ion-input> 
+         
+             <ion-datetime cssClass="datetime"
+             [required]="verEven"
+             [min]="modalMaterias.inicio.toISOString"
+             displayFormat="hh:mm a"  
+             placeholder="00:00"
+             cancelText = "Cancelar"
+             doneText= "Aceptar"
+             name="fin"
+             [(ngModel)]="modalMaterias.fin"
+             ></ion-datetime> 
+    
+         </ion-item>
+
+         <ion-item>
+          <ion-icon slot="start" name="pencil"></ion-icon>
+    
+          <ion-label position="floating">
+          Comentario</ion-label>
+          
+          <ion-input
+          type="text"
+          name="comentario"
+          [(ngModel)]="modalMaterias.comentario"
+          maxlegth="100">
+          
+        </ion-input>
+        </ion-item>
+
+        </ion-list>
+  
+        <ion-button
+        class="ion-padding"
+        type="submit" 
+        expand="block"
+        [disabled]="form.invalid">
+          Guardar
+        </ion-button>
+
+  </form>
+
+</ion-content>

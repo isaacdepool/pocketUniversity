@@ -1,0 +1,22 @@
+<app-header titulo="Ayuda"></app-header>
+
+<ion-content>
+
+    <ion-list *ngFor="let item of information; let i = index;" class="accordion-list" lines="none" detail="false" no-padding>
+
+        <ion-item class="fondo" tappable (click)=toggleSection(i) [ngClass]="{'section-active': item.open, 'section': !item.open }">
+            <ion-icon slot="end" name="chevron-forward-outline" *ngIf="!item.open"></ion-icon>
+            <ion-icon slot="end" name="chevron-down-outline" *ngIf="item.open"></ion-icon>
+
+            <ion-label>
+                {{item.titulo}}
+            </ion-label>
+        </ion-item>
+        <div class="text ion-text-justify" *ngIf="item.info && item.open">
+            {{item.info}}
+        </div>
+
+
+    </ion-list>
+
+</ion-content>

@@ -1,0 +1,39 @@
+<ion-content>
+
+    <ion-slides class="slide" pager="true" [options]=slideOpts (ionSlideReachEnd)="slide()">
+
+        <ion-slide class="slide">
+            <ion-img src="./assets/welcome1-1.png"></ion-img>
+        </ion-slide>
+
+        <ion-slide class="slide">
+            <ion-img src="./assets/welcome2-1.png"></ion-img>
+        </ion-slide>
+
+        <ion-slide class="slide">
+            <ion-img src="./assets/welcome3-1.png"></ion-img>
+        </ion-slide>
+
+        <ion-slide class="slide">
+            <ion-img src="./assets/welcome4-1.png"></ion-img>
+        </ion-slide>
+
+        <ion-slide class="slide">
+            <ion-img src="./assets/welcome5-1.png"></ion-img>
+        </ion-slide>
+
+        <ion-slide class="slide">
+            <ion-img src="./assets/welcome6-1.png"></ion-img>
+
+            <ion-button class="btn"
+            [disabled]="final"  
+            expand="block" 
+            color="danger" 
+            disabled 
+            (click)="navigateToLogin()">Comenzar</ion-button>
+        </ion-slide>
+    </ion-slides>
+
+   
+
+</ion-content>

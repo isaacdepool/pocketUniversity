@@ -1,0 +1,108 @@
+<app-header titulo="Galeria"></app-header>
+
+<ion-content>
+
+  <ion-item lines="none">
+
+    
+    <ion-buttons slot="end">
+
+      <div class="buscar">
+
+        
+        <ion-button 
+        slot="end" 
+        fill="clear" 
+        shape="round">
+        
+        <ion-input (ionChange)="buscar( $event )" type="text"></ion-input>
+        <ion-icon name="search"></ion-icon>
+    
+        </ion-button>
+
+      </div>
+  
+      <ion-button (click)="opts( $event )" 
+      expand="block" 
+      fill="clear" 
+      shape="round">
+        
+      <ion-icon name="ellipsis-vertical"></ion-icon>
+  
+      </ion-button>
+
+    </ion-buttons>
+
+  </ion-item>
+  
+    <ion-row >
+
+      <ion-col size="6"
+      class="padding" >
+
+      <ion-card class="card-size" 
+      *ngIf="ver"
+      (click)="verFavorito()"> 
+
+      <ng-container *ngFor="let imgFav of fotos; let i = index">
+
+        <ion-img class="img"
+        *ngIf="imgFav.favorito == true" [src]="img[i]"></ion-img>
+
+    </ng-container>
+
+    <ion-img class="defaultImg"
+          src="/assets/photos.svg"></ion-img>
+    
+  </ion-card>
+        <ion-item lines="none" class="ion-text-center">
+  
+          <ion-label class="ion-text-capitalize">Favoritos</ion-label>
+
+        </ion-item>
+        
+        
+      </ion-col>
+
+      <ng-container *ngFor="let car of carpeta | filtro: textoBuscar: 'nombre'">
+      
+      <ion-col size="6"
+      class="padding" >
+
+      <ion-card class="card-size" 
+      *ngIf="ver"
+      (click)="verCarpeta( car.id )">
+
+      <ion-img class="img"
+              [src]="img[i]"></ion-img>
+          
+          <ng-container *ngFor="let imgF of fotos; let i = index">
+
+              <ion-img
+              *ngIf="imgF.id_carpeta == car.id" [src]="img[i]"></ion-img>
+
+          </ng-container>
+
+          <ion-img class="defaultImg"
+          src="/assets/photos.svg"></ion-img>
+        </ion-card>
+
+            <ion-skeleton-text *ngIf="!ver"
+            color="medium"
+            class="card-size"
+            animated 
+            style="width: 100%"></ion-skeleton-text>
+  
+            <ion-item lines="none" class="ion-text-center">
+  
+              <ion-label class="ion-text-capitalize">{{car.nombre}}</ion-label>
+  
+            </ion-item>
+            
+          </ion-col>
+        </ng-container>
+
+        </ion-row>
+
+</ion-content>
+  

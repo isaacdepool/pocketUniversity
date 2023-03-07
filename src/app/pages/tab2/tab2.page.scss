@@ -1,0 +1,36 @@
+ion-icon {
+    font-size: 24px;
+}
+
+.num-bo {
+    width: 32.2%;
+    height: 64px;
+}
+
+ion-button {
+    --color: #eb445a;
+    --ripple-color: rgb(192, 186, 186);
+}
+
+.add {
+    position: fixed;
+    left: 0;
+    bottom: 0px;
+    right: 0;
+}
+
+.ic {
+    color: grey;
+}
+
+ion-segment {
+    margin-top: 20px;
+}
+
+.segment-button-checked {
+    color: var( --ion-color-danger) !important;
+}
+
+.bot {
+    margin-top: 30px;
+}

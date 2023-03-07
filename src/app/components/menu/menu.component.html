@@ -1,0 +1,63 @@
+<ion-menu side="start" 
+  menuId="desp" 
+  contentId="main">
+    <ion-header>
+      <ion-toolbar color="primary">
+        
+        <!-- Logo -->
+        <ion-img src="/assets/pocketU.svg"></ion-img>
+ 
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content
+     class="padding">
+      <ion-list>
+
+        <ion-menu-toggle *ngFor="let c of components | async; let id = index" >
+          
+          <ion-item lines="none"
+          *ngIf="c.redirecTo != '/ayuda' && c.redirecTo != '/config'"
+          [routerLink]="c.redirecTo">
+          
+            <ion-icon slot="start"
+            [name]="c.icon"></ion-icon>
+
+            <ion-label>{{ c.name }}</ion-label>
+
+          </ion-item>
+          
+
+        </ion-menu-toggle>
+
+
+      </ion-list>
+
+      <ion-footer>
+
+        <ion-toolbar>
+
+
+          <ion-list>
+  
+            <ion-menu-toggle
+            *ngFor="let c of components | async; let id = index" >
+            
+              <ion-item lines="none"
+              *ngIf="c.redirecTo == '/ayuda' || c.redirecTo == '/config'"
+              [routerLink]="c.redirecTo">
+                <ion-icon slot="start"
+                [name]="c.icon"></ion-icon>
+                <ion-label>{{ c.name }}</ion-label>
+              </ion-item>
+              
+    
+            </ion-menu-toggle>
+  
+          </ion-list>
+
+        </ion-toolbar>
+        
+      </ion-footer>
+    </ion-content>
+  </ion-menu>

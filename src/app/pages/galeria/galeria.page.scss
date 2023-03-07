@@ -1,0 +1,47 @@
+
+.buscar{
+    border-radius: 50px;
+    border: solid;
+    color: var(--ion-color-medium);
+}
+
+.card-size{
+    height: 95%;
+    width: 95%;
+    border-radius: 15%;
+}
+
+.padding{
+    height: 200px;
+    margin-bottom: 10%;
+}
+
+.opts{
+    z-index: 1;
+    bottom: 0;
+    width: 100%;
+    opacity: 90%;
+}
+
+.opts2{
+    z-index: 1;
+    top: 0;
+    width: 100%;
+    opacity: 90%;
+}
+
+.center{
+
+    margin: auto;
+}
+
+.defaultImg{
+    height: 100%;
+}
+
+.img{
+
+    // height: 100%;
+    // margin-bottom: 0px !important;
+
+}

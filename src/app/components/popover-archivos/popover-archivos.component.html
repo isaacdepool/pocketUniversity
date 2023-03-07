@@ -1,0 +1,11 @@
+<ion-list>
+  <ion-item *ngFor="let it of opt"
+  color="dark"
+  lines="none"
+  (click)="onClick( it.nombre, it.url )">
+
+    <!-- <ion-icon slot="start" [name]="it.icon"></ion-icon> -->
+    <ion-label
+    class="ion-text-capitalize">{{ it.nombre }}</ion-label>
+  </ion-item> 
+</ion-list>
